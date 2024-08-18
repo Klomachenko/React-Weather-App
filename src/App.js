@@ -1,5 +1,8 @@
 import { useEffect } from 'react';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import WeatherBox from './component/WeatherBox';
+import WeatherButton from './component/WeatherButton';
 
 // 1. 앱 실행가 동시에 현재위치 기반 날씨 보여주기
 // 2. 날씨정보 (도시, 섭씨, 화씨, 날씨상태)
@@ -27,7 +30,14 @@ function App() {
   useEffect(() => {
     getCurrentLocation();
   }, []);
-  return <div>hiiiii</div>;
+  return (
+    <div>
+      <div className='container'>
+        <WeatherBox />
+        <WeatherButton />
+      </div>
+    </div>
+  );
 }
 
 export default App;
