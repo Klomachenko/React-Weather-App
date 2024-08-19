@@ -13,6 +13,7 @@ import WeatherButton from './component/WeatherButton';
 
 function App() {
   const [weather, setWeather] = useState(null);
+  const [currentCity, setCurrentCity] = useState('');
   const [city, setCity] = useState('');
   const cities = ['paris', 'new york', 'tokyo'];
   const getCurrentLocation = () => {
@@ -28,6 +29,7 @@ function App() {
     let response = await fetch(url);
     let data = await response.json();
     setWeather(data);
+    setCurrentCity(data.name);
   };
 
   useEffect(() => {
@@ -43,7 +45,6 @@ function App() {
 &units=metric`;
     let response = await fetch(url);
     let data = await response.json();
-    console.log(data);
     setWeather(data);
   };
 
@@ -51,7 +52,11 @@ function App() {
     <div>
       <div className='container'>
         <WeatherBox weather={weather} />
-        <WeatherButton cities={cities} setCity={setCity} />
+        <WeatherButton
+          cities={cities}
+          setCity={setCity}
+          currentCity={currentCity}
+        />
       </div>
     </div>
   );
