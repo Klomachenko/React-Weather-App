@@ -55,6 +55,7 @@ function App() {
         <WeatherButton
           cities={cities}
           setCity={setCity}
+          city={city}
           currentCity={currentCity}
         />
       </div>
